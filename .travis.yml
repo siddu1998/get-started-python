@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6"
 notifications:
-    email: msaisiddartha1@gmail.com
+    slack: ibm-research:bLcRT4dofYlBUocjPBvlxO9p
 
 before_install:
   - echo -e "machine github.com\n  login $GITHUB_TOKEN" >> ~/.netrc
@@ -10,3 +10,10 @@ before_install:
 script:
   - echo "skipping tests"	
 #   - py.test -s # or py.test for Python versions 3.5 and below
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: cf push -f manifest.yml
+  on:
+    branch: develop
