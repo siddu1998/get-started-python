@@ -12,8 +12,11 @@ script:
 #   - py.test -s # or py.test for Python versions 3.5 and below
 
 deploy:
-- provider: script
-  skip_cleanup: true
-  script: cf push -f manifest.yml
+- provider: cloudfoundry
+  username: apikey
+  password: $apikey
+  organization: msaisiddartha
+  space: dev
+  manifest: manifest.yml
   on:
     branch: develop
