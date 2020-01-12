@@ -15,6 +15,7 @@ deploy:
 - provider: cloudfoundry
   username: apikey
   password: $apikey
+  api: https://api.eu-gb.bluemix.net
   organization: msaisiddartha
   space: dev
   manifest: manifest.yml
